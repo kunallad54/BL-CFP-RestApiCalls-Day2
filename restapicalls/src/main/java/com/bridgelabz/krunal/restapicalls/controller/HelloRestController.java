@@ -1,9 +1,9 @@
 /************************************************************************************************
  * 
- * Purpose : UC2 : Make REST Call to show Hello Krunal Welcome to BridgeLabz
- * 				   - Use GET Request Method and pass name as query parameter
+ * Purpose : UC3 : Make REST Call to show Hello Krunal Welcome to BridgeLabz
+ * 				   - Use GET Request Method and pass name as path variable
  * 				   - Use CURL to demonstrate the REST API Call
- * 				   - curl localhost:8080/hello/getMessage?name=Krunal-w "\n"
+ * 				   - curl localhost:8080/hello/param/Krunal -w "\n"
  * 
  * @author Krunal Lad
  * @since 09-08-2021
@@ -12,6 +12,7 @@
 package com.bridgelabz.krunal.restapicalls.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,4 +43,18 @@ public class HelloRestController {
 	public String sayHello (@RequestParam(value = "name")String name) {
 		return "Hello " + name + " Welcome to Bridgelabz";
 	}
+	
+	/**
+	 * Purpose : Use GET Request Method and pass name as path variable 
+	 * 
+	 * @param name
+	 * @return
+	 */
+	@GetMapping(value = "/param/{name}")
+	public String sayHelloParam(@PathVariable String name) {
+		return  "Hello " + name + " Welcome to Bridelabz";
+	}
+	
+	
+	
 }
